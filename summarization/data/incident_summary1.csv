@@ -1,0 +1,4 @@
+,created_by,created_date,deleted_by,deleted_date,is_deleted,modified_by,modified_date,incident_count,incident_date_gmt,incident_date_local,incident_hour_gmt,incident_hour_local,incident_label_count,incident_val_avg,incident_val_max,incident_val_min,incident_val_sum,camera_id,city_id,customer_id,incident_id,location_id,subsite_id,usecase_id,zone_id
+0,1,1697637479000,1,1697637479000,0,1,1697637479000,96,2023-10-16,2023-10-16,09,09,96,240.42708333333334,484,1,23081,3,1.0,1,1,1,1,1,1
+1,1,1697637479000,1,1697637479000,0,1,1697637479000,10,2023-10-16,2023-10-16,10,10,10,354.0,484,10,3540,3,1.0,1,1,1,1,1,1
+2,1,1697637479000,1,1697637479000,0,1,1697637479000,30,2023-10-16,2023-10-16,10,10,30,204.03333333333333,409,6,6121,4,4.0,2,1,4,4,3,4

@@ -1,0 +1,18 @@
+db:
+  host: "172.16.0.214"
+  username: "vishal"
+  db: "tcl-dev"
+  password: "Welcome#123"
+  tablename: "incident_summary"
+  updatetablename: "incident_summary_time"
+  port: 3306
+mongodb:
+  host: "172.16.0.204"
+  port: 27017
+  connect: False
+  database: "history"
+  collection: "reports"
+apis:
+  getsummarytime: "http://172.16.0.204:8051/summarytime"
+  updatesummarytime: "http://172.16.0.204:8051/updatesummarytime"
+
