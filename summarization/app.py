@@ -30,6 +30,9 @@ from src.createclient import CreateClient
 from src.summarization import create_dataframe
 from src.fetch_data import Mongo_Data, Sql_Data
 
+def future_callback_error_logger(future):
+    e = future.exception()
+    print("Thread pool exception====>", e)
 
 def run():
     hour = datetime.now().hour
@@ -107,6 +110,7 @@ def starthourly_summarization():
         # if current_time.second >= 5 and current_time.second <= 10:
         if current_time.minute >= 5 and current_time.minute <= 10:     
             summarization_future = threadexecutor.submit(run)
+            summarization_future.add_done_callback(future_callback_error_logger)
                             
         time.sleep(300)
         # time.sleep(5)
@@ -177,7 +181,7 @@ def starthourly_summarization():
 
 if __name__ == "__main__":
     # main()
-    # starthourly_summarization()
-    run()
+    starthourly_summarization()
+    # run()
 
 # schedule.every().hour.at(":05").do(run)
