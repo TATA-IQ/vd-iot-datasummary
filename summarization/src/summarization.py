@@ -39,8 +39,12 @@ class create_dataframe:
                 d = 0
                 t = 0
                 for data_lbl in w["misc"]:
+                    print(data_lbl)
                     if("data" in data_lbl): ## text in number plate 
-                        d=d+int(data_lbl["data"])
+                        try:
+                            d=d+int(data_lbl["data"])
+                        except ValueError:
+                            d+=1
                     if("text" in data_lbl):
                         t+=1 
                 temp1 = [w["incident_id"], w["name"], d, t]
@@ -54,6 +58,7 @@ class create_dataframe:
   
     
     def convert_mongo_to_db(self,list_cur):
+        print("in convert_mongo_to_db")
         df_all = pd.DataFrame(columns =['camera_id', 'camera_name', 'zone_id', 'zone_name', 'subsite_id', 'subsite_name',
                                        'location_id', 'location_name', 'customer_id', 'customer_name', 'usecase_id', 'usecase_name',
                                         'incident_date_local', 'incident_hour_local', 'incident_date_gmt', 'incident_hour_gmt',
@@ -69,9 +74,12 @@ class create_dataframe:
                                                 'incident_date_local', 'incident_hour_local', 'incident_date_gmt', 'incident_hour_gmt',
                                                 'incident_id', 'incident_name', 'incident_value', 'incident_label'])
             df_all=pd.concat([df_all, df])
+        print("completed convert_mongo_to_db")
+        df_all.to_csv("df_all.csv")
         return df_all
     @staticmethod
     def summarization(df_all):
+        print("in summarization")
         summary = df_all.groupby(['camera_id', 'camera_name', 'zone_id', 'zone_name', 'subsite_id', 'subsite_name', 'city_id','city_name',
                     'location_id', 'location_name', 'customer_id', 'customer_name', 'usecase_id', 'usecase_name',
                     'incident_date_local', 'incident_hour_local', 'incident_date_gmt', 'incident_hour_gmt',
@@ -90,5 +98,5 @@ class create_dataframe:
         s[["created_by", "created_date", "deleted_by", "deleted_date", "is_deleted", "modified_by", "modified_date"]] = 1, ct, 1, ct, 0, 1, ct 
 
         df_final = s[['created_by', 'created_date', 'deleted_by', 'deleted_date', 'is_deleted', 'modified_by', 'modified_date', 'incident_count', 'incident_date_gmt', 'incident_date_local', 'incident_hour_gmt', 'incident_hour_local', 'incident_label_count', 'incident_val_avg', 'incident_val_max', 'incident_val_min', 'incident_val_sum', 'camera_id', 'city_id', 'customer_id', 'incident_id', 'location_id', 'subsite_id', 'usecase_id', 'zone_id']]
-        
+        print("completed summarization")
         return df_final

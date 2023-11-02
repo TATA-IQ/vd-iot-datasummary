@@ -62,7 +62,7 @@ def run():
         latest_end_time_str = latest_end_time.strftime('%Y-%m-%d %H:%M:%S')
         
         list_cur = Mongo_Data.get_data(mongo_collection, latest_start_time_str, latest_end_time_str)
-        print(len(list_cur))
+        print("len list cur ",len(list_cur))
             
         print("latest_start_time_str, latest_end_time_str ",latest_start_time_str, latest_end_time_str)
         response = Sql_Data.update_data(apiconfig["updatesummarytime"], latest_start_time_str, latest_end_time_str)
@@ -70,13 +70,20 @@ def run():
         # cursor = mongo_collection.find()
         # list_cur = list(cursor)
         if len(list_cur)>0:
+            print("len of list cur > 0")
             dataframe_obj = create_dataframe()
             df_all = dataframe_obj.convert_mongo_to_db(list_cur) 
             df_final = dataframe_obj.summarization(df_all)
+            df_final.to_csv('data/incident_summary1.csv')
 
             # # # # # creating mysql engine and inserting the data in db
-            clientobj.insert_into_db(df_final)
-            print("===done===", datetime.now())
+            try:
+                clientobj.insert_into_db(df_final)
+                print("===done===", datetime.now())
+            except Exception as e:
+                print(e)
+                print("couldnt save summarization in db")
+                
             # time.sleep(10)
         # df_final.to_csv('data/incident_summary1.csv')
     
@@ -91,15 +98,19 @@ def run_thread():
 def schedule_summarization():
     print("summarization started for hour", datetime.now().hour)
     schedule.every().hour.do(run)
+    
+def starthourly_summarization():  
+    threadexecutor = ThreadPoolExecutor(max_workers=2) 
+    while True:
+        current_time = datetime.now()
+        print(f"current time {current_time} and minute {current_time.minute}")
+        # if current_time.second >= 5 and current_time.second <= 10:
+        if current_time.minute >= 5 and current_time.minute <= 10:     
+            summarization_future = threadexecutor.submit(run)
+                            
+        time.sleep(300)
+        # time.sleep(5)
 
-# count = 0
-# while True:
-#     print("not started ", count)
-#     schedule.run_pending()
-#     time.sleep(1)
-#     count +=1
-#     if count==3600:
-#         count=0
         
 # def main():
 #     while True:
@@ -154,18 +165,19 @@ def schedule_summarization():
     # main()
     
     
-def main():
-    executor = ThreadPoolExecutor(max_workers=2)
-    # schedule.every().hour.do(executor.submit, run) 
-    schedule.every().hour.at(":05").do(executor.submit, run)
-    # schedule.every(10).seconds.do(executor.submit, run)
+# def main():
+#     executor = ThreadPoolExecutor(max_workers=2)
+#     # schedule.every().hour.do(executor.submit, run) 
+#     schedule.every().hour.at(":05").do(executor.submit, run)
+#     # schedule.every(10).seconds.do(executor.submit, run)
 
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
+#     while True:
+#         schedule.run_pending()
+#         time.sleep(1)
 
 if __name__ == "__main__":
-    main()
-    # run()
+    # main()
+    # starthourly_summarization()
+    run()
 
 # schedule.every().hour.at(":05").do(run)
