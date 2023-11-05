@@ -44,7 +44,7 @@ class create_dataframe:
                         try:
                             d=d+int(data_lbl["data"])
                         except ValueError:
-                            d+=1
+                            continue
                     if("text" in data_lbl):
                         t+=1 
                 temp1 = [w["incident_id"], w["name"], d, t]
