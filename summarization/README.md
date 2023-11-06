@@ -1,48 +1,31 @@
-# summarization
+# Introduction 
+This is a datasummary repo. 
 
-[![Release](https://img.shields.io/github/v/release/fpgmaas/summarization)](https://img.shields.io/github/v/release/fpgmaas/summarization)
-[![Build status](https://img.shields.io/github/actions/workflow/status/fpgmaas/summarization/main.yml?branch=main)](https://github.com/fpgmaas/summarization/actions/workflows/main.yml?query=branch%3Amain)
-[![codecov](https://codecov.io/gh/fpgmaas/summarization/branch/main/graph/badge.svg)](https://codecov.io/gh/fpgmaas/summarization)
-[![Commit activity](https://img.shields.io/github/commit-activity/m/fpgmaas/summarization)](https://img.shields.io/github/commit-activity/m/fpgmaas/summarization)
-[![License](https://img.shields.io/github/license/fpgmaas/summarization)](https://img.shields.io/github/license/fpgmaas/summarization)
+# How It Works
+1. Config has connections to MongoDB and SQL databases which are used to fetch the required data for summarization
+2. Start processing for summarization.
 
-summarization dashboard
+# Architecture
+![Architectural Flow](postprocessing/images/postprocess.png)
 
-- **Github repository**: <https://github.com/fpgmaas/summarization/>
-- **Documentation** <https://fpgmaas.github.io/summarization/>
+1. summarization API is hosted using uvicorn
+2. To make the alertsummarization fast, we are running multiple thread pool to process the request faster
+3. Summarization is performed, and the results are saved into a final DataFrame and saved in the db.
 
-## Getting started with your project
+# Dependency
+1. This Module is dependent on the https://tatacommiot@dev.azure.com/tatacommiot/Video%20Based%20IoT/_git/vd-iot-dataapiservice
+2. This module will be dependent on post process service
 
-First, create a repository on GitHub with the same name as this project, and then run the following commands:
+# Installation
+1. Install Python3.9 
+2. poetry install
 
-``` bash
-git init -b main
-git add .
-git commit -m "init commit"
-git remote add origin git@github.com:fpgmaas/summarization.git
-git push -u origin main
-```
+# Run App
+1. python app.py
 
-Finally, install the environment and the pre-commit hooks with 
-
-```bash
-make install
-```
-
-You are now ready to start development on your project! The CI/CD
-pipeline will be triggered when you open a pull request, merge to main,
-or when you create a new release.
-
-To finalize the set-up for publishing to PyPi or Artifactory, see
-[here](https://fpgmaas.github.io/cookiecutter-poetry/features/publishing/#set-up-for-pypi).
-For activating the automatic documentation with MkDocs, see
-[here](https://fpgmaas.github.io/cookiecutter-poetry/features/mkdocs/#enabling-the-documentation-on-github).
-To enable the code coverage reports, see [here](https://fpgmaas.github.io/cookiecutter-poetry/features/codecov/).
-
-## Releasing a new version
-
-
-
----
-
-Repository initiated with [fpgmaas/cookiecutter-poetry](https://github.com/fpgmaas/cookiecutter-poetry).
+# Docker 
+1. Contenirization is enabled
+2. change the config.yaml
+2. Navigate to the Dockerfile level
+2. build the container (sudo docker build -t "summarization")
+3. Run the container (sudo oocker run -t "summarization")
