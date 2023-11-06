@@ -24,7 +24,7 @@ This is a datasummary repo.
 1. python app.py
 
 # Docker 
-1. Contenirization is enabled
+1. Containirization is enabled
 2. change the config.yaml
 2. Navigate to the Dockerfile level
 2. build the container (sudo docker build -t "summarization")
