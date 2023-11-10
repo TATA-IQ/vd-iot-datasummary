@@ -100,7 +100,7 @@ def run_thread():
 
 def schedule_summarization():
     print("summarization started for hour", datetime.now().hour)
-    schedule.every().hour.do(run)
+    schedule.every().hour.at(":05").do(run)
     
 def starthourly_summarization():  
     threadexecutor = ThreadPoolExecutor(max_workers=2) 

@@ -1,5 +1,5 @@
-from minio import Minio
-from minio.error import S3Error
+# from minio import Minio
+# from minio.error import S3Error
 from pymongo import MongoClient
 import mysql.connector
 from sqlalchemy import create_engine
