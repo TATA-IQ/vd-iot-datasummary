@@ -23,9 +23,23 @@ class CreateClient():
   
     def mongo_client(self):
         print("======creating mongo client ======")
-        mongo_client = MongoClient(host = self.mongodbconf['host'], 
-                                    port = self.mongodbconf['port'],
-                                    connect=self.mongodbconf['connect'])
+        if self.mongodbconf['username'] and self.mongodbconf['password']:
+            mongo_client = MongoClient(
+                host=self.mongodbconf["host"], port=self.mongodbconf["port"], 
+                username=self.mongodbconf["username"],
+                password=self.mongodbconf["password"],
+                connect=self.mongodbconf["connect"],
+                authSource=self.mongodbconf["database"]
+            )
+            
+        else:
+            mongo_client = MongoClient(
+            host=self.mongodbconf["host"], port=self.mongodbconf["port"], 
+            connect=self.mongodbconf["connect"]
+        )
+        # mongo_client = MongoClient(host = self.mongodbconf['host'], 
+        #                             port = self.mongodbconf['port'],
+        #                             connect=self.mongodbconf['connect'])
 
         database = mongo_client[self.mongodbconf['database']]
         collection  = database[self.mongodbconf['collection']]
