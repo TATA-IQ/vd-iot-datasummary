@@ -9,8 +9,8 @@ db:
 mongodb:
   host: "172.31.26.109"
   port: 27017
-  username: ""
-  password: ""
+  username: "application"
+  password: "application_pass_2023"
   connect: False
   database: "history"
   collection: "reports"
