@@ -1,20 +1,18 @@
 db:
-  host: "172.31.26.109"
-  username: "application"
-  db: "appdb"
-  password: "applicationP@33word"
+  host: "172.16.0.214"
+  username: "vishal"
+  db: "tcl-uat"
+  password: "Welcome#123"
   tablename: "incident_summary"
   updatetablename: "incident_summary_time"
   port: 3306
 mongodb:
-  host: "172.31.26.109"
+  host: "172.16.0.204"
   port: 27017
-  username: "application"
-  password: "application_pass_2023"
   connect: False
   database: "history"
   collection: "reports"
 apis:
-  getsummarytime: "http://10.0.153.141:8000/summarytime"
-  updatesummarytime: "http://10.0.153.141:8000/updatesummarytime"
+  getsummarytime: "http://172.16.0.204:8000/summarytime"
+  updatesummarytime: "http://172.16.0.204:8000/updatesummarytime"
 
