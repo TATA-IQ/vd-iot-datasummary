@@ -33,16 +33,41 @@ from src.fetch_data import Mongo_Data, Sql_Data
 def future_callback_error_logger(future):
     e = future.exception()
     print("Thread pool exception====>", e)
+def get_confdata():
+    res=requests.get(conf[0]["consul_url"])
+    data=res.json()
+    dbconf =None
+    datasummaryconf=None
+    if "pipelineconfig" in data:
+        port=data["pipelineconfig"]["Port"]
+        while True:
+            endpoints=requests.get("http://pipelineconfig.service.consul:"+str(port)+"/").json()
+            if "datasummary" in endpoints:
+                try:
+                    datasummaryconf=requests.get("http://pipelineconfig.service.consul:"+str(port)+"/"+endpoints["datasummary"]).json()
+                except:
+                    time.sleep(5)
+                    continue
+            if "dbapi" in endpoints and "dbapi" in data:
+                try:
+                    dbconf=requests.get("http://pipelineconfig.service.consul:"+str(port)+"/"+endpoints["dbapi"]).json()
+                except:
+                    time.sleep(5)
+                    continue
+            if dbconf is not None and datasummaryconf is not None:
+                break
+    return dbconf,datasummaryconf
 
 def run():
     hour = datetime.now().hour
     print(f"summarization started at {hour}th hour")
-    config = Config.yamlconfig("config/config.yaml")[0]
-    dbconfig=config["db"]
-    mongoconfig=config["mongodb"]
-    apiconfig=config["apis"]
+    #config = Config.yamlconfig("config/config.yaml")[0]
+    config_db,config_summary=get_confdata()
+    dbconfig=config_summary["db"]
+    mongoconfig=config_summary["mongodb"]
+    apiconfig=config_db["apis"]
 
-    clientobj = CreateClient(config)
+    clientobj = CreateClient(config_db)
     # sql_cnx = clientobj.connection_sql()
     mongo_collection = clientobj.mongo_client()
     start_time, end_time = Sql_Data.get_data(apiconfig["getsummarytime"])
