@@ -1,0 +1,12 @@
+pandas
+mysql-connector-python
+SQLAlchemy  
+pymongo
+kafka-python
+requests
+schedule
+protobuf==3.20.*
+shared-memory-dict
+PyYaml
+"fastapi[all]"
+minio
