@@ -5,7 +5,6 @@ from bson.json_util import dumps
 import pandas as pd
 from datetime import datetime, timedelta
 import pandas as pd
-import schedule
 import time
 import mysql.connector
 from sqlalchemy import create_engine
