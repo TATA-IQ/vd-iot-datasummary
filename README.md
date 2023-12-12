@@ -1,20 +1,31 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+This is a datasummary repo. 
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+# How It Works
+1. Config has connections to MongoDB and SQL databases which are used to fetch the required data for summarization
+2. Start processing for summarization.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+# Architecture
+![Architectural Flow](postprocessing/images/postprocess.png)
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+1. summarization API is hosted using uvicorn
+2. To make the alertsummarization fast, we are running multiple thread pool to process the request faster
+3. Summarization is performed, and the results are saved into a final DataFrame and saved in the db.
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+# Dependency
+1. This Module is dependent on the https://tatacommiot@dev.azure.com/tatacommiot/Video%20Based%20IoT/_git/vd-iot-dataapiservice
+2. This module will be dependent on post process service
+
+# Installation
+1. Install Python3.9 
+2. poetry install
+
+# Run App
+1. python app.py
+
+# Docker 
+1. Containirization is enabled
+2. change the config.yaml
+2. Navigate to the Dockerfile level
+2. build the container (sudo docker build -t "summarization")
+3. Run the container (sudo oocker run -t "summarization")
