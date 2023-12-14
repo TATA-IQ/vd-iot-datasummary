@@ -2,8 +2,8 @@ import requests
 from datetime import datetime
 
 class Mongo_Data:
-    print("in mongo data")
     def get_data(mongo_collection,start_time=None, end_time=None):
+        print("in mongo data class")
         if start_time and end_time:
             print({"time.UTC_time": {"$gt":start_time,"$lte":end_time}})
             start_time = datetime.strptime(start_time, "%Y-%m-%d %H:%M:%S")
