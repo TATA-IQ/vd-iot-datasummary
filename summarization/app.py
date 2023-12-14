@@ -58,6 +58,7 @@ def get_confdata():
     return dbconf,datasummaryconf
 
 def run():
+    print("in run")
     hour = datetime.now().hour
     print(f"summarization started at {hour}th hour")
     #config = Config.yamlconfig("config/config.yaml")[0]
@@ -70,16 +71,17 @@ def run():
     # sql_cnx = clientobj.connection_sql()
     mongo_collection = clientobj.mongo_client()
     start_time, end_time = Sql_Data.get_data(apiconfig["getsummarytime"])
+    print("from database start time and endtime is ")
     print(start_time, end_time)
     if end_time==None:
         print(end_time)
-        latest_start_time = datetime.now()-timedelta(days=1,hours=1) ## should be replaced with lowest time in mongo
+        latest_start_time = datetime.now()-timedelta(days=10,hours=1) ## should be replaced with lowest time in mongo
         latest_end_time = datetime.now().replace(minute=0, second=0,microsecond=0)
     else:
         latest_start_time = datetime.strptime(end_time,'%Y-%m-%dT%H:%M:%S')
         latest_end_time =  datetime.now().replace(minute=0, second=0, microsecond=0)
         
-    print("==###===",latest_start_time, latest_end_time)  
+    print("==### final===",latest_start_time, latest_end_time)  
     print((latest_start_time.replace(minute=0, second=0,microsecond=0)-latest_end_time).total_seconds()) 
     if (latest_end_time-latest_start_time.replace(minute=0, second=0,microsecond=0)).total_seconds() != 0: ##
         try:
@@ -87,7 +89,7 @@ def run():
         except:
             latest_start_time_str = None
         latest_end_time_str = latest_end_time.strftime('%Y-%m-%d %H:%M:%S')
-        
+        print("latest_start_time_str, latest_end_time_str before quering", latest_start_time_str, latest_end_time_str)
         list_cur = Mongo_Data.get_data(mongo_collection, latest_start_time_str, latest_end_time_str)
         print("len list cur ",len(list_cur))
             
@@ -113,7 +115,9 @@ def run():
                 
             # time.sleep(10)
         # df_final.to_csv('data/incident_summary1.csv')
-    
+    else:
+        print("start hour and end hour times are same")
+        print(latest_end_time,latest_start_time)
     
 ## thread pool executor
     
@@ -122,9 +126,9 @@ def run_thread():
     hour_thread.start()
     hour_thread.join()
 
-def schedule_summarization():
-    print("summarization started for hour", datetime.now().hour)
-    schedule.every().hour.at(":05").do(run)
+# def schedule_summarization():
+#     print("summarization started for hour", datetime.now().hour)
+#     schedule.every().hour.at(":05").do(run)
     
 def starthourly_summarization():  
     threadexecutor = ThreadPoolExecutor(max_workers=2) 
@@ -139,7 +143,6 @@ def starthourly_summarization():
         time.sleep(300)
         # time.sleep(5)
 
-        
 # def main():
 #     while True:
 #         print("summarization started for hour", datetime.now().hour)
@@ -203,9 +206,11 @@ def starthourly_summarization():
 #         schedule.run_pending()
 #         time.sleep(1)
 
-if __name__ == "__main__":
-    # main()
-    starthourly_summarization()
-    # run()
-
+# if __name__ == "__main__":
+#     # main()
+#     starthourly_summarization()
+#     # run()
+print("started summarization")
+starthourly_summarization()
+        
 # schedule.every().hour.at(":05").do(run)

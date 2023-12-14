@@ -3,6 +3,7 @@
 from pymongo import MongoClient
 import mysql.connector
 from sqlalchemy import create_engine
+import urllib
 
 class CreateClient():
     def __init__(self,config):
@@ -23,7 +24,14 @@ class CreateClient():
   
     def mongo_client(self):
         print("======creating mongo client ======")
-        if self.mongodbconf['username'] and self.mongodbconf['password']:
+        if "username" not in self.mongodbconf or "password" not in self.mongodbconf :
+            mongo_client = MongoClient(
+            host=self.mongodbconf["host"], port=self.mongodbconf["port"], 
+            connect=self.mongodbconf["connect"]
+        )
+
+
+        elif self.mongodbconf['username'] and self.mongodbconf['password']:
             mongo_client = MongoClient(
                 host=self.mongodbconf["host"], port=self.mongodbconf["port"], 
                 username=self.mongodbconf["username"],
@@ -43,12 +51,18 @@ class CreateClient():
 
         database = mongo_client[self.mongodbconf['database']]
         collection  = database[self.mongodbconf['collection']]
+        print("collection created")
 
         return collection
     
     def create_sql_engine(self,):
         print("===== creating mysql engine ======")
-        engine=create_engine("mysql+pymysql://{user}:{pw}@{host}/{db}".format(host=self.dbconfig["host"], port = str(self.dbconfig["port"]), db=self.dbconfig["db"], user=self.dbconfig["username"], pw=self.dbconfig["password"]))
+        password = self.dbconfig["password"]
+        updated_password = urllib.parse.quote_plus(password)
+        print("password:", password)
+        print("updated_password",updated_password)
+
+        engine=create_engine("mysql+pymysql://{user}:{pw}@{host}/{db}".format(host=self.dbconfig["host"], port = str(self.dbconfig["port"]), db=self.dbconfig["db"], user=self.dbconfig["username"], pw=updated_password))
         return engine
     
     def insert_into_db(self,df):
