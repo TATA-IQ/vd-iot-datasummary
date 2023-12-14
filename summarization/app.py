@@ -17,6 +17,7 @@ import requests
 import uvicorn
 from typing import Union
 import mysql.connector
+import consul
 
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -76,7 +77,7 @@ def get_confdata(consul_conf):
         try:
             res=requests.get(endpoint_addr+endpoints["endpoint"]["datasummary"])
             summaryconf=res.json()
-            print("containerconf===>",containerconf)
+            print("summaryconf===>",summaryconf)
             break
             
 
@@ -108,8 +109,8 @@ def get_confdata(consul_conf):
     
     print("======dbres======")
     print(dbres)
-    print(containerconf)
-    return  dbres,containerconf
+    print(summaryconf)
+    return  dbres,summaryconf
 
 
 def run():
