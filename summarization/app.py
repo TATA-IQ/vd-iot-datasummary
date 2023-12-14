@@ -32,37 +32,92 @@ from src.fetch_data import Mongo_Data, Sql_Data
 def future_callback_error_logger(future):
     e = future.exception()
     print("Thread pool exception====>", e)
-def get_confdata():
-    res=requests.get(conf[0]["consul_url"])
-    data=res.json()
-    dbconf =None
-    datasummaryconf=None
-    if "pipelineconfig" in data:
-        port=data["pipelineconfig"]["Port"]
-        while True:
-            endpoints=requests.get("http://pipelineconfig.service.consul:"+str(port)+"/").json()
-            if "datasummary" in endpoints:
-                try:
-                    datasummaryconf=requests.get("http://pipelineconfig.service.consul:"+str(port)+"/"+endpoints["datasummary"]).json()
-                except:
-                    time.sleep(5)
-                    continue
-            if "dbapi" in endpoints and "dbapi" in data:
-                try:
-                    dbconf=requests.get("http://pipelineconfig.service.consul:"+str(port)+"/"+endpoints["dbapi"]).json()
-                except:
-                    time.sleep(5)
-                    continue
-            if dbconf is not None and datasummaryconf is not None:
-                break
-    return dbconf,datasummaryconf
+
+
+def get_service_address(consul_client,service_name,env):
+    while True:
+        
+        try:
+            services=consul_client.catalog.service(service_name)[1]
+            print(services)
+            for i in services:
+                if env == i["ServiceID"].split("-")[-1]:
+                    return i
+        except:
+            time.sleep(10)
+            continue
+
+
+
+def get_confdata(consul_conf):
+    consul_client = consul.Consul(host=consul_conf["host"],port=consul_conf["port"])
+    pipelineconf=get_service_address(consul_client,"pipelineconfig",consul_conf["env"])
+
+    summaryconf=None
+    dbconf=None
+    
+    env=consul_conf["env"]
+    
+    endpoint_addr="http://"+pipelineconf["ServiceAddress"]+":"+str(pipelineconf["ServicePort"])
+    print("endpoint addr====",endpoint_addr)
+    while True:
+        
+        try:
+            res=requests.get(endpoint_addr+"/")
+            endpoints=res.json()
+            print("===got endpoints===",endpoints)
+            break
+        except Exception as ex:
+            print("endpoint exception==>",ex)
+            time.sleep(10)
+            continue
+    
+    while True:
+        try:
+            res=requests.get(endpoint_addr+endpoints["endpoint"]["datasummary"])
+            summaryconf=res.json()
+            print("containerconf===>",containerconf)
+            break
+            
+
+        except Exception as ex:
+            print("containerconf exception==>",ex)
+            time.sleep(10)
+            continue
+    print("=======searching for dbapi====")
+    while True:
+        try:
+            print("=====consul search====")
+            dbconf=get_service_address(consul_client,"dbapi",consul_conf["env"])
+            print("****",dbconf)
+            dbhost=dbconf["ServiceAddress"]
+            dbport=dbconf["ServicePort"]
+            res=requests.get(endpoint_addr+endpoints["endpoint"]["dbapi"])
+            dbres=res.json()
+            print("===got db conf===")
+            print(dbres)
+            break
+        except Exception as ex:
+            print("db discovery exception===",ex)
+            time.sleep(10)
+            continue
+    for i in dbres["apis"]:
+        print("====>",i)
+        dbres["apis"][i]="http://"+dbhost+":"+str(dbport)+dbres["apis"][i]
+
+    
+    print("======dbres======")
+    print(dbres)
+    print(containerconf)
+    return  dbres,containerconf
+
 
 def run():
     print("in run")
     hour = datetime.now().hour
     print(f"summarization started at {hour}th hour")
-    #config = Config.yamlconfig("config/config.yaml")[0]
-    config_db,config_summary=get_confdata()
+    config = Config.yamlconfig("config/config.yaml")[0]
+    config_db,config_summary=get_confdata(config["consul"])
     dbconfig=config_summary["db"]
     mongoconfig=config_summary["mongodb"]
     apiconfig=config_db["apis"]
