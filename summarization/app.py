@@ -30,6 +30,12 @@ from src.createclient import CreateClient
 from src.summarization import create_dataframe
 from src.fetch_data import Mongo_Data, Sql_Data
 
+from sourcelogs.logger import create_rotating_log
+from console_logging.console import Console
+console=Console()
+os.makedirs("logs", exist_ok=True)
+log = create_rotating_log("logs/logs.log")
+
 def future_callback_error_logger(future):
     e = future.exception()
     print("Thread pool exception====>", e)
@@ -66,10 +72,12 @@ def get_confdata(consul_conf):
         try:
             res=requests.get(endpoint_addr+"/")
             endpoints=res.json()
-            print("===got endpoints===",endpoints)
+            log.info(f"===got endpoints==={endpoints}")
+            console.info(f"===got endpoints==={endpoints}")
             break
         except Exception as ex:
-            print("endpoint exception==>",ex)
+            log.error(f"endpoint exception==>{ex}")
+            console.error(f"endpoint exception==>{ex}")
             time.sleep(10)
             continue
     
@@ -77,29 +85,32 @@ def get_confdata(consul_conf):
         try:
             res=requests.get(endpoint_addr+endpoints["endpoint"]["datasummary"])
             summaryconf=res.json()
-            print("summaryconf===>",summaryconf)
+            log.info(f"summaryconf===>{summaryconf}")
+            console.info(f"summaryconf===>{summaryconf}")
             break
             
 
         except Exception as ex:
-            print("containerconf exception==>",ex)
+            log.error(f"summaryconf exception==>{ex}")
+            console.error(f"summaryconf exception==>{ex}")
             time.sleep(10)
             continue
-    print("=======searching for dbapi====")
+    console.info("=======searching for dbapi====")
     while True:
         try:
-            print("=====consul search====")
+            log.info("=====consul search====")
+            console.info("=====consul search====")
             dbconf=get_service_address(consul_client,"dbapi",consul_conf["env"])
-            print("****",dbconf)
             dbhost=dbconf["ServiceAddress"]
             dbport=dbconf["ServicePort"]
             res=requests.get(endpoint_addr+endpoints["endpoint"]["dbapi"])
             dbres=res.json()
-            print("===got db conf===")
+            console.info(f"===got db conf==={ dbres}")
             print(dbres)
             break
         except Exception as ex:
-            print("db discovery exception===",ex)
+            log.error("db discovery exception==={0}".format(ex))
+            console.error("db discovery exception==={0}".format(ex))
             time.sleep(10)
             continue
     for i in dbres["apis"]:
@@ -107,55 +118,70 @@ def get_confdata(consul_conf):
         dbres["apis"][i]="http://"+dbhost+":"+str(dbport)+dbres["apis"][i]
 
     
-    print("======dbres======")
-    print(dbres)
-    print(summaryconf)
+    console.info("======dbres======")
+    log.info(dbres)
+    log.info(summaryconf)
+    console.info(dbres)
+    console.info(summaryconf)
     return  dbres,summaryconf
 
 
 def run():
-    print("in run")
+    log.info("started=== in run ")  
+    console.info("started=== in run ")
     hour = datetime.now().hour
-    print(f"summarization started at {hour}th hour")
+    log.info(f"summarization started at {hour}th hour")
+    console.info(f"summarization started at {hour}th hour")
     config = Config.yamlconfig("config/config.yaml")[0]
     config_db,config_summary=get_confdata(config["consul"])
     dbconfig=config_summary["db"]
     mongoconfig=config_summary["mongodb"]
     apiconfig=config_db["apis"]
 
-    clientobj = CreateClient(config_db)
+    clientobj = CreateClient(config_db, log)
     # sql_cnx = clientobj.connection_sql()
     mongo_collection = clientobj.mongo_client()
     start_time, end_time = Sql_Data.get_data(apiconfig["getsummarytime"])
-    print("from database start time and endtime is ")
-    print(start_time, end_time)
+    print(f"from database start time == {start_time} and endtime is {end_time} ")
+    log.info(f"from database start time == {start_time} and endtime is {end_time} ")
+    console.info(f"from database start time == {start_time} and endtime is {end_time} ")
     if end_time==None:
-        print(end_time)
+        log.info(end_time)
+        console.info(end_time)
         latest_start_time = datetime.now()-timedelta(days=10,hours=1) ## should be replaced with lowest time in mongo
         latest_end_time = datetime.now().replace(minute=0, second=0,microsecond=0)
     else:
         latest_start_time = datetime.strptime(end_time,'%Y-%m-%dT%H:%M:%S')
         latest_end_time =  datetime.now().replace(minute=0, second=0, microsecond=0)
         
-    print("==### final===",latest_start_time, latest_end_time)  
+    print(f"==### final===,{latest_start_time}, {latest_end_time}")  
+    log.info(f"==### final===,{latest_start_time}, {latest_end_time}")  
+    console.info(f"==### final===,{latest_start_time}, {latest_end_time}")  
     print((latest_start_time.replace(minute=0, second=0,microsecond=0)-latest_end_time).total_seconds()) 
+    console.info((latest_start_time.replace(minute=0, second=0,microsecond=0)-latest_end_time).total_seconds()) 
     if (latest_end_time-latest_start_time.replace(minute=0, second=0,microsecond=0)).total_seconds() != 0: ##
         try:
             latest_start_time_str = latest_start_time.strftime('%Y-%m-%d %H:%M:%S')
         except:
             latest_start_time_str = None
         latest_end_time_str = latest_end_time.strftime('%Y-%m-%d %H:%M:%S')
-        print("latest_start_time_str, latest_end_time_str before quering", latest_start_time_str, latest_end_time_str)
-        list_cur = Mongo_Data.get_data(mongo_collection, latest_start_time_str, latest_end_time_str)
-        print("len list cur ",len(list_cur))
+        console.info(f"latest_start_time_str, latest_end_time_str before quering {latest_start_time_str} and {latest_end_time_str}")
+        log.info(f"latest_start_time_str, latest_end_time_str before quering {latest_start_time_str} and {latest_end_time_str}")
+        list_cur = Mongo_Data.get_data(mongo_collection, latest_start_time_str, latest_end_time_str, log)
+        print(f"len list cur {len(list_cur)}")
+        console.info(f"len list cur {len(list_cur)}")
+        log.info(f"len list cur {len(list_cur)}")
             
         print("latest_start_time_str, latest_end_time_str ",latest_start_time_str, latest_end_time_str)
         response = Sql_Data.update_data(apiconfig["updatesummarytime"], latest_start_time_str, latest_end_time_str)
-        print("=====response=======", response)
+        print(f"=====response=======, {response}")
+        console.info(f"=====response=======, {response}")
+        log.info(f"=====response=======, {response}")
         # cursor = mongo_collection.find()
         # list_cur = list(cursor)
         if len(list_cur)>0:
-            print("len of list cur > 0")
+            console.info("len of list cur > 0")
+            log.info("len of list cur > 0")
             dataframe_obj = create_dataframe()
             df_all = dataframe_obj.convert_mongo_to_db(list_cur) 
             df_final = dataframe_obj.summarization(df_all)
@@ -164,16 +190,18 @@ def run():
             # # # # # creating mysql engine and inserting the data in db
             try:
                 clientobj.insert_into_db(df_final)
-                print("===done===", datetime.now())
-            except Exception as e:
-                print(e)
-                print("couldnt save summarization in db")
+                log.info(f"===done==={ datetime.now()}")
+                console.info(f"===done==={ datetime.now()}")
+            except Exception as ex:
+                print(ex)
+                console.error(f"couldnt save summarization in db {ex}")
+                log.error(f"couldnt save summarization in db {ex}")
                 
             # time.sleep(10)
         # df_final.to_csv('data/incident_summary1.csv')
     else:
-        print("start hour and end hour times are same")
-        print(latest_end_time,latest_start_time)
+        console.info(f"start hour and end hour times are same ie., {latest_end_time},{latest_start_time}")
+        log.info(f"start hour and end hour times are same ie., {latest_end_time},{latest_start_time}")
     
 ## thread pool executor
     
@@ -191,6 +219,8 @@ def starthourly_summarization():
     while True:
         current_time = datetime.now()
         print(f"current time {current_time} and minute {current_time.minute}")
+        log.info(f"current time {current_time} and minute {current_time.minute}")
+        console.info(f"current time {current_time} and minute {current_time.minute}")
         # if current_time.second >= 5 and current_time.second <= 10:
         if current_time.minute >= 5 and current_time.minute <= 10:     
             summarization_future = threadexecutor.submit(run)
