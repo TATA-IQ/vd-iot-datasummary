@@ -46,6 +46,7 @@ class Mongo_Data:
 class Sql_Data:
     def get_data(url):
         response=requests.get(url)
+        print(f"respnose from getsummarytime : {response.json()}")
         result = response.json()['data'][0]
         # print(result)
         return (result['start_time'], result['end_time'])

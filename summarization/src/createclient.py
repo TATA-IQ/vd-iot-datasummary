@@ -8,8 +8,8 @@ from console_logging.console import Console
 console=Console()
 
 class CreateClient():
-    def __init__(self,config, logger):
-        print("====in create client=====")
+    def __init__(self, config, logger):
+        print(f"====in create client====={config}")
         self.config=config
         self.dbconfig = self.config['db']
         self.mongodbconf = self.config['mongodb']
@@ -75,9 +75,9 @@ class CreateClient():
         return engine
     
     def insert_into_db(self,df):
-        console.info("===== inside into insert into db =====")
-        self.log.info("===== inside into insert into db =====")
+        console.info(f"===== inside into insert into db, {self.dbconfig['tablename']} =====")
+        self.log.info(f"===== inside into insert into db {self.dbconfig['tablename']}=====")
         engine = self.create_sql_engine()
         print(df.head())
         df.to_sql(self.dbconfig["tablename"], engine, if_exists='append', index=False)
-        
+        console.success(f"inserted into db {self.dbconfig['tablename']}")

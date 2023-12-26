@@ -126,19 +126,24 @@ def get_confdata(consul_conf):
     return  dbres,summaryconf
 
 
-def run():
+def run(config_db,config_summary):
     log.info("started=== in run ")  
     console.info("started=== in run ")
     hour = datetime.now().hour
     log.info(f"summarization started at {hour}th hour")
     console.info(f"summarization started at {hour}th hour")
-    config = Config.yamlconfig("config/config.yaml")[0]
-    config_db,config_summary=get_confdata(config["consul"])
+    # config = Config.yamlconfig("config/config.yaml")[0]
+    # config_db,config_summary=get_confdata(config["consul"])
+    print("here===========================")
+    print("="*100)
+    print(f"config_db==={config_db}")
+    print("config_summary====",config_summary)
+    print("="*100)
     dbconfig=config_summary["db"]
     mongoconfig=config_summary["mongodb"]
     apiconfig=config_db["apis"]
 
-    clientobj = CreateClient(config_db, log)
+    clientobj = CreateClient(config_summary, log)
     # sql_cnx = clientobj.connection_sql()
     mongo_collection = clientobj.mongo_client()
     start_time, end_time = Sql_Data.get_data(apiconfig["getsummarytime"])
@@ -190,8 +195,8 @@ def run():
             # # # # # creating mysql engine and inserting the data in db
             try:
                 clientobj.insert_into_db(df_final)
-                log.info(f"===done==={ datetime.now()}")
-                console.info(f"===done==={ datetime.now()}")
+                log.success(f"===summarization done at==={ datetime.now()}")
+                console.success(f"===done==={ datetime.now()}")
             except Exception as ex:
                 print(ex)
                 console.error(f"couldnt save summarization in db {ex}")
@@ -214,7 +219,7 @@ def run_thread():
 #     print("summarization started for hour", datetime.now().hour)
 #     schedule.every().hour.at(":05").do(run)
     
-def starthourly_summarization():  
+def starthourly_summarization(config_db,config_summary):  
     threadexecutor = ThreadPoolExecutor(max_workers=2) 
     while True:
         current_time = datetime.now()
@@ -222,8 +227,8 @@ def starthourly_summarization():
         log.info(f"current time {current_time} and minute {current_time.minute}")
         console.info(f"current time {current_time} and minute {current_time.minute}")
         # if current_time.second >= 5 and current_time.second <= 10:
-        if current_time.minute >= 5 and current_time.minute <= 10:     
-            summarization_future = threadexecutor.submit(run)
+        if current_time.minute >= 0 and current_time.minute < 5:     
+            summarization_future = threadexecutor.submit(run,config_db,config_summary)
             summarization_future.add_done_callback(future_callback_error_logger)
                             
         time.sleep(300)
@@ -297,6 +302,8 @@ def starthourly_summarization():
 #     starthourly_summarization()
 #     # run()
 print("started summarization")
-starthourly_summarization()
+config = Config.yamlconfig("config/config.yaml")[0]
+config_db,config_summary=get_confdata(config["consul"])
+starthourly_summarization(config_db,config_summary)
         
 # schedule.every().hour.at(":05").do(run)
