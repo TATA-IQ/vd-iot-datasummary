@@ -227,7 +227,7 @@ def starthourly_summarization(config_db,config_summary):
         log.info(f"current time {current_time} and minute {current_time.minute}")
         console.info(f"current time {current_time} and minute {current_time.minute}")
         # if current_time.second >= 5 and current_time.second <= 10:
-        if current_time.minute >= 0 and current_time.minute < 5:     
+        if current_time.minute >= 5 and current_time.minute < 10:     
             summarization_future = threadexecutor.submit(run,config_db,config_summary)
             summarization_future.add_done_callback(future_callback_error_logger)
                             

@@ -72,6 +72,8 @@ class CreateClient():
         self.log.info(f"updated_password: {updated_password}")
 
         engine=create_engine("mysql+pymysql://{user}:{pw}@{host}/{db}".format(host=self.dbconfig["host"], port = str(self.dbconfig["port"]), db=self.dbconfig["db"], user=self.dbconfig["username"], pw=updated_password))
+        console.success("created pysql client")
+        self.log.info("created pysql client")
         return engine
     
     def insert_into_db(self,df):
