@@ -4,16 +4,20 @@ from pymongo import MongoClient
 import mysql.connector
 from sqlalchemy import create_engine
 import urllib
+from console_logging.console import Console
+console=Console()
 
 class CreateClient():
-    def __init__(self,config):
-        print("====in create client=====")
+    def __init__(self, config, logger):
+        print(f"====in create client====={config}")
         self.config=config
         self.dbconfig = self.config['db']
         self.mongodbconf = self.config['mongodb']
+        self.log = logger
     
     def connection_sql(self,):
-        print("======creating mysql connection ======")
+        console.info("======creating mysql connection ======")
+        self.log.info("======creating mysql connection ======")
         cnx = mysql.connector.connect(
         user=self.dbconfig["username"],
         password=self.dbconfig["password"],
@@ -23,7 +27,8 @@ class CreateClient():
         return cnx
   
     def mongo_client(self):
-        print("======creating mongo client ======")
+        console.info("======creating mongo client ======")
+        self.log.info("======creating mongo client ======")
         if "username" not in self.mongodbconf or "password" not in self.mongodbconf :
             mongo_client = MongoClient(
             host=self.mongodbconf["host"], port=self.mongodbconf["port"], 
@@ -51,23 +56,30 @@ class CreateClient():
 
         database = mongo_client[self.mongodbconf['database']]
         collection  = database[self.mongodbconf['collection']]
-        print("collection created")
+        self.log.info("collection created")
+        console.info("collection created")
 
         return collection
     
     def create_sql_engine(self,):
-        print("===== creating mysql engine ======")
+        console.info("===== creating mysql engine ======")
+        self.log.info("===== creating mysql engine ======")
         password = self.dbconfig["password"]
         updated_password = urllib.parse.quote_plus(password)
-        print("password:", password)
-        print("updated_password",updated_password)
+        console.info(f"password: {password}")
+        self.log.info(f"password: {password}")
+        console.info(f"updated_password: {updated_password}")
+        self.log.info(f"updated_password: {updated_password}")
 
         engine=create_engine("mysql+pymysql://{user}:{pw}@{host}/{db}".format(host=self.dbconfig["host"], port = str(self.dbconfig["port"]), db=self.dbconfig["db"], user=self.dbconfig["username"], pw=updated_password))
+        console.success("created pysql client")
+        self.log.info("created pysql client")
         return engine
     
     def insert_into_db(self,df):
-        print("===== inside into insert into db =====")
+        console.info(f"===== inside into insert into db, {self.dbconfig['tablename']} =====")
+        self.log.info(f"===== inside into insert into db {self.dbconfig['tablename']}=====")
         engine = self.create_sql_engine()
         print(df.head())
         df.to_sql(self.dbconfig["tablename"], engine, if_exists='append', index=False)
-        
+        console.success(f"inserted into db {self.dbconfig['tablename']}")

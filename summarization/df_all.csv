@@ -1,2 +1,0 @@
-,camera_id,camera_name,zone_id,zone_name,subsite_id,subsite_name,location_id,location_name,customer_id,customer_name,usecase_id,usecase_name,incident_date_local,incident_hour_local,incident_date_gmt,incident_hour_gmt,incident_id,incident_name,incident_value,incident_label,city_id,city_name
-0,12,intrusion,4,Pantry,4,Floor 5,4,Office,2,Tata iQ,15,intrusion incident,2023-11-05,05,2023-11-05,05,8,intrusion,0,0,4.0,Bangalore
