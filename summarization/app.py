@@ -119,6 +119,8 @@ def run():
     print(f"summarization started at {hour}th hour")
     config = Config.yamlconfig("config/config.yaml")[0]
     config_db,config_summary=get_confdata(config["consul"])
+    print("======config summary======")
+    print(config_summary)
     dbconfig=config_summary["db"]
     mongoconfig=config_summary["mongodb"]
     apiconfig=config_db["apis"]
