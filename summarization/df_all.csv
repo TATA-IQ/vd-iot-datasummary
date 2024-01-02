@@ -1,0 +1,7 @@
+,camera_id,camera_name,zone_id,zone_name,subsite_id,subsite_name,location_id,location_name,customer_id,customer_name,usecase_id,usecase_name,incident_date_local,incident_hour_local,incident_date_gmt,incident_hour_gmt,incident_id,incident_name,incident_value,incident_label,city_id,city_name
+0,14,PPE2,4,Ground Floor,4,MG Road Store,4,Bengaluru,2,TataiQ,12,PPE Test1,2024-01-02,10,2024-01-02,04,1,PPE Incident,0,0,4.0,Bangalore
+1,14,PPE2,4,Ground Floor,4,MG Road Store,4,Bengaluru,2,TataiQ,12,PPE Test1,2024-01-02,10,2024-01-02,04,1,PPE Incident,0,0,4.0,Bangalore
+2,14,PPE2,4,Ground Floor,4,MG Road Store,4,Bengaluru,2,TataiQ,12,PPE Test1,2024-01-02,10,2024-01-02,04,1,PPE Incident,0,0,4.0,Bangalore
+3,14,PPE2,4,Ground Floor,4,MG Road Store,4,Bengaluru,2,TataiQ,12,PPE Test1,2024-01-02,10,2024-01-02,04,1,PPE Incident,0,0,4.0,Bangalore
+4,14,PPE2,4,Ground Floor,4,MG Road Store,4,Bengaluru,2,TataiQ,12,PPE Test1,2024-01-02,10,2024-01-02,04,1,PPE Incident,0,0,4.0,Bangalore
+5,14,PPE2,4,Ground Floor,4,MG Road Store,4,Bengaluru,2,TataiQ,12,PPE Test1,2024-01-02,10,2024-01-02,04,1,PPE Incident,0,0,4.0,Bangalore

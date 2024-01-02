@@ -134,11 +134,11 @@ def run(config_db,config_summary):
     console.info(f"summarization started at {hour}th hour")
     # config = Config.yamlconfig("config/config.yaml")[0]
     # config_db,config_summary=get_confdata(config["consul"])
-    print("here===========================")
-    print("="*100)
-    print(f"config_db==={config_db}")
-    print("config_summary====",config_summary)
-    print("="*100)
+    # print("here===========================")
+    # print("="*100)
+    # print(f"config_db==={config_db}")
+    # print("config_summary====",config_summary)
+    # print("="*100)
     dbconfig=config_summary["db"]
     mongoconfig=config_summary["mongodb"]
     apiconfig=config_db["apis"]
@@ -159,10 +159,10 @@ def run(config_db,config_summary):
         latest_start_time = datetime.strptime(end_time,'%Y-%m-%dT%H:%M:%S')
         latest_end_time =  datetime.now().replace(minute=0, second=0, microsecond=0)
         
-    print(f"==### final===,{latest_start_time}, {latest_end_time}")  
+    # print(f"==### final===,{latest_start_time}, {latest_end_time}")  
     log.info(f"==### final===,{latest_start_time}, {latest_end_time}")  
     console.info(f"==### final===,{latest_start_time}, {latest_end_time}")  
-    print((latest_start_time.replace(minute=0, second=0,microsecond=0)-latest_end_time).total_seconds()) 
+    # print((latest_start_time.replace(minute=0, second=0,microsecond=0)-latest_end_time).total_seconds()) 
     console.info((latest_start_time.replace(minute=0, second=0,microsecond=0)-latest_end_time).total_seconds()) 
     if (latest_end_time-latest_start_time.replace(minute=0, second=0,microsecond=0)).total_seconds() != 0: ##
         try:
@@ -173,13 +173,13 @@ def run(config_db,config_summary):
         console.info(f"latest_start_time_str, latest_end_time_str before quering {latest_start_time_str} and {latest_end_time_str}")
         log.info(f"latest_start_time_str, latest_end_time_str before quering {latest_start_time_str} and {latest_end_time_str}")
         list_cur = Mongo_Data.get_data(mongo_collection, latest_start_time_str, latest_end_time_str, log)
-        print(f"len list cur {len(list_cur)}")
+        # print(f"len list cur {len(list_cur)}")
         console.info(f"len list cur {len(list_cur)}")
         log.info(f"len list cur {len(list_cur)}")
             
-        print("latest_start_time_str, latest_end_time_str ",latest_start_time_str, latest_end_time_str)
+        # print("latest_start_time_str, latest_end_time_str ",latest_start_time_str, latest_end_time_str)
         response = Sql_Data.update_data(apiconfig["updatesummarytime"], latest_start_time_str, latest_end_time_str)
-        print(f"=====response=======, {response}")
+        # print(f"=====response=======, {response}")
         console.info(f"=====response=======, {response}")
         log.info(f"=====response=======, {response}")
         # cursor = mongo_collection.find()
@@ -195,7 +195,7 @@ def run(config_db,config_summary):
             # # # # # creating mysql engine and inserting the data in db
             try:
                 clientobj.insert_into_db(df_final)
-                log.success(f"===summarization done at==={ datetime.now()}")
+                log.info(f"===summarization done at==={ datetime.now()}")
                 console.success(f"===done==={ datetime.now()}")
             except Exception as ex:
                 print(ex)
@@ -223,7 +223,7 @@ def starthourly_summarization(config_db,config_summary):
     threadexecutor = ThreadPoolExecutor(max_workers=2) 
     while True:
         current_time = datetime.now()
-        print(f"current time {current_time} and minute {current_time.minute}")
+        # print(f"current time {current_time} and minute {current_time.minute}")
         log.info(f"current time {current_time} and minute {current_time.minute}")
         console.info(f"current time {current_time} and minute {current_time.minute}")
         # if current_time.second >= 5 and current_time.second <= 10:

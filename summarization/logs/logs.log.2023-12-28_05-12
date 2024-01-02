@@ -1,0 +1,584 @@
+current time 2023-12-28 05:12:30.867998 and minute 12
+current time 2023-12-28 05:17:30.967819 and minute 17
+current time 2023-12-28 05:22:31.067291 and minute 22
+current time 2023-12-28 05:27:31.166219 and minute 27
+current time 2023-12-28 05:32:31.266191 and minute 32
+current time 2023-12-28 05:37:31.366164 and minute 37
+current time 2023-12-28 05:42:31.466170 and minute 42
+current time 2023-12-28 05:47:31.566226 and minute 47
+current time 2023-12-28 05:52:31.666379 and minute 52
+current time 2023-12-28 05:57:31.766406 and minute 57
+current time 2023-12-28 06:02:31.866779 and minute 2
+current time 2023-12-28 06:07:31.966185 and minute 7
+started=== in run 
+summarization started at 6th hour
+======creating mongo client ======
+collection created
+from database start time == 2023-12-28T04:00:00 and endtime is 2023-12-28T05:00:00 
+==### final===,2023-12-28 05:00:00, 2023-12-28 06:00:00
+latest_start_time_str, latest_end_time_str before quering 2023-12-28 05:00:00 and 2023-12-28 06:00:00
+in mongo data class
+len list cur 17
+=====response=======, {'data': 'Updated incident_summary_time'}
+len of list cur > 0
+===== inside into insert into db incident_summary=====
+===== creating mysql engine ======
+password: Welcome#123
+updated_password: Welcome%23123
+created pysql client
+===summarization done at===2023-12-28 06:07:35.630666
+current time 2023-12-28 06:12:32.066215 and minute 12
+current time 2023-12-28 06:17:32.166222 and minute 17
+current time 2023-12-28 06:22:32.266263 and minute 22
+current time 2023-12-28 06:27:32.366160 and minute 27
+current time 2023-12-28 06:32:32.466349 and minute 32
+current time 2023-12-28 06:37:32.566475 and minute 37
+current time 2023-12-28 06:42:32.666160 and minute 42
+current time 2023-12-28 06:47:32.766165 and minute 47
+current time 2023-12-28 06:52:32.866168 and minute 52
+current time 2023-12-28 06:57:32.966322 and minute 57
+current time 2023-12-28 07:02:33.066706 and minute 2
+current time 2023-12-28 07:07:33.166736 and minute 7
+started=== in run 
+summarization started at 7th hour
+======creating mongo client ======
+collection created
+from database start time == 2023-12-28T05:00:00 and endtime is 2023-12-28T06:00:00 
+==### final===,2023-12-28 06:00:00, 2023-12-28 07:00:00
+latest_start_time_str, latest_end_time_str before quering 2023-12-28 06:00:00 and 2023-12-28 07:00:00
+in mongo data class
+len list cur 33
+=====response=======, {'data': 'Updated incident_summary_time'}
+len of list cur > 0
+===== inside into insert into db incident_summary=====
+===== creating mysql engine ======
+password: Welcome#123
+updated_password: Welcome%23123
+created pysql client
+===summarization done at===2023-12-28 07:07:39.502766
+current time 2023-12-28 07:12:33.266942 and minute 12
+current time 2023-12-28 07:17:33.367257 and minute 17
+current time 2023-12-28 07:22:33.466743 and minute 22
+current time 2023-12-28 07:27:33.567013 and minute 27
+current time 2023-12-28 07:32:33.667321 and minute 32
+current time 2023-12-28 07:37:33.767133 and minute 37
+current time 2023-12-28 07:42:33.867275 and minute 42
+current time 2023-12-28 07:47:33.967611 and minute 47
+current time 2023-12-28 07:52:34.067926 and minute 52
+current time 2023-12-28 07:57:34.167665 and minute 57
+current time 2023-12-28 08:02:34.267957 and minute 2
+current time 2023-12-28 08:07:34.367927 and minute 7
+started=== in run 
+summarization started at 8th hour
+======creating mongo client ======
+collection created
+from database start time == 2023-12-28T06:00:00 and endtime is 2023-12-28T07:00:00 
+==### final===,2023-12-28 07:00:00, 2023-12-28 08:00:00
+latest_start_time_str, latest_end_time_str before quering 2023-12-28 07:00:00 and 2023-12-28 08:00:00
+in mongo data class
+len list cur 22
+=====response=======, {'data': 'Updated incident_summary_time'}
+len of list cur > 0
+===== inside into insert into db incident_summary=====
+===== creating mysql engine ======
+password: Welcome#123
+updated_password: Welcome%23123
+created pysql client
+===summarization done at===2023-12-28 08:07:39.699563
+current time 2023-12-28 08:12:34.468252 and minute 12
+current time 2023-12-28 08:17:34.567340 and minute 17
+current time 2023-12-28 08:22:34.667432 and minute 22
+current time 2023-12-28 08:27:34.767332 and minute 27
+current time 2023-12-28 08:32:34.867782 and minute 32
+current time 2023-12-28 08:37:34.968315 and minute 37
+current time 2023-12-28 08:42:35.068182 and minute 42
+current time 2023-12-28 08:47:35.166905 and minute 47
+current time 2023-12-28 08:52:35.267298 and minute 52
+current time 2023-12-28 08:57:35.366590 and minute 57
+current time 2023-12-28 09:02:35.466191 and minute 2
+current time 2023-12-28 09:07:35.566720 and minute 7
+started=== in run 
+summarization started at 9th hour
+======creating mongo client ======
+collection created
+from database start time == 2023-12-28T07:00:00 and endtime is 2023-12-28T08:00:00 
+==### final===,2023-12-28 08:00:00, 2023-12-28 09:00:00
+latest_start_time_str, latest_end_time_str before quering 2023-12-28 08:00:00 and 2023-12-28 09:00:00
+in mongo data class
+len list cur 26
+=====response=======, {'data': 'Updated incident_summary_time'}
+len of list cur > 0
+===== inside into insert into db incident_summary=====
+===== creating mysql engine ======
+password: Welcome#123
+updated_password: Welcome%23123
+created pysql client
+===summarization done at===2023-12-28 09:07:40.883432
+current time 2023-12-28 09:12:35.667254 and minute 12
+current time 2023-12-28 09:17:35.767558 and minute 17
+current time 2023-12-28 09:22:35.867904 and minute 22
+current time 2023-12-28 09:27:35.967165 and minute 27
+current time 2023-12-28 09:32:36.067577 and minute 32
+current time 2023-12-28 09:37:36.168235 and minute 37
+current time 2023-12-28 09:42:36.268572 and minute 42
+current time 2023-12-28 09:47:36.369095 and minute 47
+current time 2023-12-28 09:52:36.469313 and minute 52
+current time 2023-12-28 09:57:36.568721 and minute 57
+current time 2023-12-28 10:02:36.668973 and minute 2
+current time 2023-12-28 10:07:36.769466 and minute 7
+started=== in run 
+summarization started at 10th hour
+======creating mongo client ======
+collection created
+from database start time == 2023-12-28T08:00:00 and endtime is 2023-12-28T09:00:00 
+==### final===,2023-12-28 09:00:00, 2023-12-28 10:00:00
+latest_start_time_str, latest_end_time_str before quering 2023-12-28 09:00:00 and 2023-12-28 10:00:00
+in mongo data class
+len list cur 0
+=====response=======, {'data': 'Updated incident_summary_time'}
+current time 2023-12-28 10:12:36.870202 and minute 12
+current time 2023-12-28 10:17:36.970759 and minute 17
+current time 2023-12-28 10:22:37.071305 and minute 22
+current time 2023-12-28 10:27:37.171301 and minute 27
+current time 2023-12-28 10:32:37.271397 and minute 32
+current time 2023-12-28 10:37:37.371960 and minute 37
+current time 2023-12-28 10:42:37.471521 and minute 42
+current time 2023-12-28 10:47:37.571933 and minute 47
+current time 2023-12-28 10:52:37.672246 and minute 52
+current time 2023-12-28 10:57:37.771454 and minute 57
+current time 2023-12-28 11:02:37.871940 and minute 2
+current time 2023-12-28 11:07:37.972145 and minute 7
+started=== in run 
+summarization started at 11th hour
+======creating mongo client ======
+collection created
+from database start time == 2023-12-28T09:00:00 and endtime is 2023-12-28T10:00:00 
+==### final===,2023-12-28 10:00:00, 2023-12-28 11:00:00
+latest_start_time_str, latest_end_time_str before quering 2023-12-28 10:00:00 and 2023-12-28 11:00:00
+in mongo data class
+len list cur 0
+=====response=======, {'data': 'Updated incident_summary_time'}
+current time 2023-12-28 11:12:38.072460 and minute 12
+current time 2023-12-28 11:17:38.172832 and minute 17
+current time 2023-12-28 11:22:38.273438 and minute 22
+current time 2023-12-28 11:27:38.373699 and minute 27
+current time 2023-12-28 11:32:38.474504 and minute 32
+current time 2023-12-28 11:37:38.574668 and minute 37
+current time 2023-12-28 11:42:38.674183 and minute 42
+current time 2023-12-28 11:47:38.774180 and minute 47
+current time 2023-12-28 11:52:38.874301 and minute 52
+current time 2023-12-28 11:57:38.974567 and minute 57
+current time 2023-12-28 12:02:39.074870 and minute 2
+current time 2023-12-28 12:07:39.175312 and minute 7
+started=== in run 
+summarization started at 12th hour
+======creating mongo client ======
+collection created
+from database start time == 2023-12-28T10:00:00 and endtime is 2023-12-28T11:00:00 
+==### final===,2023-12-28 11:00:00, 2023-12-28 12:00:00
+latest_start_time_str, latest_end_time_str before quering 2023-12-28 11:00:00 and 2023-12-28 12:00:00
+in mongo data class
+len list cur 5
+=====response=======, {'data': 'Updated incident_summary_time'}
+len of list cur > 0
+===== inside into insert into db incident_summary=====
+===== creating mysql engine ======
+password: Welcome#123
+updated_password: Welcome%23123
+created pysql client
+===summarization done at===2023-12-28 12:07:42.472101
+current time 2023-12-28 12:12:39.276022 and minute 12
+current time 2023-12-28 12:17:39.375848 and minute 17
+current time 2023-12-28 12:22:39.476527 and minute 22
+current time 2023-12-28 12:27:39.575558 and minute 27
+current time 2023-12-28 12:32:39.674652 and minute 32
+current time 2023-12-28 12:37:39.774484 and minute 37
+current time 2023-12-28 12:42:39.875140 and minute 42
+current time 2023-12-28 12:47:39.974487 and minute 47
+current time 2023-12-28 12:52:40.074162 and minute 52
+current time 2023-12-28 12:57:40.174200 and minute 57
+current time 2023-12-28 13:02:40.274169 and minute 2
+current time 2023-12-28 13:07:40.374180 and minute 7
+started=== in run 
+summarization started at 13th hour
+======creating mongo client ======
+collection created
+from database start time == 2023-12-28T11:00:00 and endtime is 2023-12-28T12:00:00 
+==### final===,2023-12-28 12:00:00, 2023-12-28 13:00:00
+latest_start_time_str, latest_end_time_str before quering 2023-12-28 12:00:00 and 2023-12-28 13:00:00
+in mongo data class
+len list cur 35
+=====response=======, {'data': 'Updated incident_summary_time'}
+len of list cur > 0
+===== inside into insert into db incident_summary=====
+===== creating mysql engine ======
+password: Welcome#123
+updated_password: Welcome%23123
+created pysql client
+===summarization done at===2023-12-28 13:07:46.501067
+current time 2023-12-28 13:12:40.474292 and minute 12
+current time 2023-12-28 13:17:40.574497 and minute 17
+current time 2023-12-28 13:22:40.674948 and minute 22
+current time 2023-12-28 13:27:40.775035 and minute 27
+current time 2023-12-28 13:32:40.875125 and minute 32
+current time 2023-12-28 13:37:40.974603 and minute 37
+current time 2023-12-28 13:42:41.074892 and minute 42
+current time 2023-12-28 13:47:41.174215 and minute 47
+current time 2023-12-28 13:52:41.274487 and minute 52
+current time 2023-12-28 13:57:41.374187 and minute 57
+current time 2023-12-28 14:02:41.474415 and minute 2
+current time 2023-12-28 14:07:41.574655 and minute 7
+started=== in run 
+summarization started at 14th hour
+======creating mongo client ======
+collection created
+from database start time == 2023-12-28T12:00:00 and endtime is 2023-12-28T13:00:00 
+==### final===,2023-12-28 13:00:00, 2023-12-28 14:00:00
+latest_start_time_str, latest_end_time_str before quering 2023-12-28 13:00:00 and 2023-12-28 14:00:00
+in mongo data class
+len list cur 44
+=====response=======, {'data': 'Updated incident_summary_time'}
+len of list cur > 0
+===== inside into insert into db incident_summary=====
+===== creating mysql engine ======
+password: Welcome#123
+updated_password: Welcome%23123
+created pysql client
+===summarization done at===2023-12-28 14:07:51.511997
+current time 2023-12-28 14:12:41.674925 and minute 12
+current time 2023-12-28 14:17:41.774844 and minute 17
+current time 2023-12-28 14:22:41.874863 and minute 22
+current time 2023-12-28 14:27:41.974612 and minute 27
+current time 2023-12-28 14:32:42.074924 and minute 32
+current time 2023-12-28 14:37:42.174430 and minute 37
+current time 2023-12-28 14:42:42.274841 and minute 42
+current time 2023-12-28 14:47:42.375323 and minute 47
+current time 2023-12-28 14:52:42.475854 and minute 52
+current time 2023-12-28 14:57:42.576237 and minute 57
+current time 2023-12-28 15:02:42.676331 and minute 2
+current time 2023-12-28 15:07:42.777092 and minute 7
+started=== in run 
+summarization started at 15th hour
+======creating mongo client ======
+collection created
+from database start time == 2023-12-28T13:00:00 and endtime is 2023-12-28T14:00:00 
+==### final===,2023-12-28 14:00:00, 2023-12-28 15:00:00
+latest_start_time_str, latest_end_time_str before quering 2023-12-28 14:00:00 and 2023-12-28 15:00:00
+in mongo data class
+len list cur 11
+=====response=======, {'data': 'Updated incident_summary_time'}
+len of list cur > 0
+===== inside into insert into db incident_summary=====
+===== creating mysql engine ======
+password: Welcome#123
+updated_password: Welcome%23123
+created pysql client
+===summarization done at===2023-12-28 15:07:45.298123
+current time 2023-12-28 15:12:42.875656 and minute 12
+current time 2023-12-28 15:17:42.976186 and minute 17
+current time 2023-12-28 15:22:43.075897 and minute 22
+current time 2023-12-28 15:27:43.176090 and minute 27
+current time 2023-12-28 15:32:43.275510 and minute 32
+current time 2023-12-28 15:37:43.375258 and minute 37
+current time 2023-12-28 15:42:43.475834 and minute 42
+current time 2023-12-28 15:47:43.576347 and minute 47
+current time 2023-12-28 15:52:43.676703 and minute 52
+current time 2023-12-28 15:57:43.776907 and minute 57
+current time 2023-12-28 16:02:43.877494 and minute 2
+current time 2023-12-28 16:07:43.977632 and minute 7
+started=== in run 
+summarization started at 16th hour
+======creating mongo client ======
+collection created
+from database start time == 2023-12-28T14:00:00 and endtime is 2023-12-28T15:00:00 
+==### final===,2023-12-28 15:00:00, 2023-12-28 16:00:00
+latest_start_time_str, latest_end_time_str before quering 2023-12-28 15:00:00 and 2023-12-28 16:00:00
+in mongo data class
+len list cur 0
+=====response=======, {'data': 'Updated incident_summary_time'}
+current time 2023-12-28 16:12:44.077675 and minute 12
+current time 2023-12-28 16:17:44.178326 and minute 17
+current time 2023-12-28 16:22:44.279383 and minute 22
+current time 2023-12-28 16:27:44.379245 and minute 27
+current time 2023-12-28 16:32:44.479893 and minute 32
+current time 2023-12-28 16:37:44.578264 and minute 37
+current time 2023-12-28 16:42:44.678614 and minute 42
+current time 2023-12-28 16:47:44.779039 and minute 47
+current time 2023-12-28 16:52:44.878184 and minute 52
+current time 2023-12-28 16:57:44.978666 and minute 57
+current time 2023-12-28 17:02:45.079423 and minute 2
+current time 2023-12-28 17:07:45.179042 and minute 7
+started=== in run 
+summarization started at 17th hour
+======creating mongo client ======
+collection created
+from database start time == 2023-12-28T15:00:00 and endtime is 2023-12-28T16:00:00 
+==### final===,2023-12-28 16:00:00, 2023-12-28 17:00:00
+latest_start_time_str, latest_end_time_str before quering 2023-12-28 16:00:00 and 2023-12-28 17:00:00
+in mongo data class
+len list cur 0
+=====response=======, {'data': 'Updated incident_summary_time'}
+current time 2023-12-28 17:12:45.278623 and minute 12
+current time 2023-12-28 17:17:45.378873 and minute 17
+current time 2023-12-28 17:22:45.479029 and minute 22
+current time 2023-12-28 17:27:45.579279 and minute 27
+current time 2023-12-28 17:32:45.679283 and minute 32
+current time 2023-12-28 17:37:45.778616 and minute 37
+current time 2023-12-28 17:42:45.879035 and minute 42
+current time 2023-12-28 17:47:45.978545 and minute 47
+current time 2023-12-28 17:52:46.078209 and minute 52
+current time 2023-12-28 17:57:46.178185 and minute 57
+current time 2023-12-28 18:02:46.278197 and minute 2
+current time 2023-12-28 18:07:46.378307 and minute 7
+started=== in run 
+summarization started at 18th hour
+======creating mongo client ======
+collection created
+from database start time == 2023-12-28T16:00:00 and endtime is 2023-12-28T17:00:00 
+==### final===,2023-12-28 17:00:00, 2023-12-28 18:00:00
+latest_start_time_str, latest_end_time_str before quering 2023-12-28 17:00:00 and 2023-12-28 18:00:00
+in mongo data class
+len list cur 0
+=====response=======, {'data': 'Updated incident_summary_time'}
+current time 2023-12-28 18:12:46.478209 and minute 12
+current time 2023-12-28 18:17:46.578752 and minute 17
+current time 2023-12-28 18:22:46.678950 and minute 22
+current time 2023-12-28 18:27:46.779442 and minute 27
+current time 2023-12-28 18:32:46.879801 and minute 32
+current time 2023-12-28 18:37:46.979421 and minute 37
+current time 2023-12-28 18:42:47.078175 and minute 42
+current time 2023-12-28 18:47:47.178171 and minute 47
+current time 2023-12-28 18:52:47.278174 and minute 52
+current time 2023-12-28 18:57:47.378173 and minute 57
+current time 2023-12-28 19:02:47.478601 and minute 2
+current time 2023-12-28 19:07:47.579033 and minute 7
+started=== in run 
+summarization started at 19th hour
+======creating mongo client ======
+collection created
+from database start time == 2023-12-28T17:00:00 and endtime is 2023-12-28T18:00:00 
+==### final===,2023-12-28 18:00:00, 2023-12-28 19:00:00
+latest_start_time_str, latest_end_time_str before quering 2023-12-28 18:00:00 and 2023-12-28 19:00:00
+in mongo data class
+len list cur 0
+=====response=======, {'data': 'Updated incident_summary_time'}
+current time 2023-12-28 19:12:47.679395 and minute 12
+current time 2023-12-28 19:17:47.779781 and minute 17
+current time 2023-12-28 19:22:47.880236 and minute 22
+current time 2023-12-28 19:27:47.980624 and minute 27
+current time 2023-12-28 19:32:48.080877 and minute 32
+current time 2023-12-28 19:37:48.181258 and minute 37
+current time 2023-12-28 19:42:48.281379 and minute 42
+current time 2023-12-28 19:47:48.380571 and minute 47
+current time 2023-12-28 19:52:48.479790 and minute 52
+current time 2023-12-28 19:57:48.580057 and minute 57
+current time 2023-12-28 20:02:48.680233 and minute 2
+current time 2023-12-28 20:07:48.779771 and minute 7
+started=== in run 
+summarization started at 20th hour
+======creating mongo client ======
+collection created
+from database start time == 2023-12-28T18:00:00 and endtime is 2023-12-28T19:00:00 
+==### final===,2023-12-28 19:00:00, 2023-12-28 20:00:00
+latest_start_time_str, latest_end_time_str before quering 2023-12-28 19:00:00 and 2023-12-28 20:00:00
+in mongo data class
+len list cur 0
+=====response=======, {'data': 'Updated incident_summary_time'}
+current time 2023-12-28 20:12:48.892679 and minute 12
+current time 2023-12-28 20:17:48.991435 and minute 17
+current time 2023-12-28 20:22:49.090915 and minute 22
+current time 2023-12-28 20:27:49.190383 and minute 27
+current time 2023-12-28 20:32:49.290787 and minute 32
+current time 2023-12-28 20:37:49.390822 and minute 37
+current time 2023-12-28 20:42:49.491069 and minute 42
+current time 2023-12-28 20:47:49.591123 and minute 47
+current time 2023-12-28 20:52:49.690209 and minute 52
+current time 2023-12-28 20:57:49.790795 and minute 57
+current time 2023-12-28 21:02:49.890571 and minute 2
+current time 2023-12-28 21:07:49.990207 and minute 7
+started=== in run 
+summarization started at 21th hour
+======creating mongo client ======
+collection created
+from database start time == 2023-12-28T19:00:00 and endtime is 2023-12-28T20:00:00 
+==### final===,2023-12-28 20:00:00, 2023-12-28 21:00:00
+latest_start_time_str, latest_end_time_str before quering 2023-12-28 20:00:00 and 2023-12-28 21:00:00
+in mongo data class
+len list cur 0
+=====response=======, {'data': 'Updated incident_summary_time'}
+current time 2023-12-28 21:12:50.090790 and minute 12
+current time 2023-12-28 21:17:50.191241 and minute 17
+current time 2023-12-28 21:22:50.291737 and minute 22
+current time 2023-12-28 21:27:50.390176 and minute 27
+current time 2023-12-28 21:32:50.490256 and minute 32
+current time 2023-12-28 21:37:50.590174 and minute 37
+current time 2023-12-28 21:42:50.690634 and minute 42
+current time 2023-12-28 21:47:50.790402 and minute 47
+current time 2023-12-28 21:52:50.890691 and minute 52
+current time 2023-12-28 21:57:50.990164 and minute 57
+current time 2023-12-28 22:02:51.091409 and minute 2
+current time 2023-12-28 22:07:51.191554 and minute 7
+started=== in run 
+summarization started at 22th hour
+======creating mongo client ======
+collection created
+from database start time == 2023-12-28T20:00:00 and endtime is 2023-12-28T21:00:00 
+==### final===,2023-12-28 21:00:00, 2023-12-28 22:00:00
+latest_start_time_str, latest_end_time_str before quering 2023-12-28 21:00:00 and 2023-12-28 22:00:00
+in mongo data class
+len list cur 0
+=====response=======, {'data': 'Updated incident_summary_time'}
+current time 2023-12-28 22:12:51.291663 and minute 12
+current time 2023-12-28 22:17:51.392087 and minute 17
+current time 2023-12-28 22:22:51.493574 and minute 22
+current time 2023-12-28 22:27:51.594259 and minute 27
+current time 2023-12-28 22:32:51.694184 and minute 32
+current time 2023-12-28 22:37:51.794345 and minute 37
+current time 2023-12-28 22:42:51.894585 and minute 42
+current time 2023-12-28 22:47:51.994168 and minute 47
+current time 2023-12-28 22:52:52.094170 and minute 52
+current time 2023-12-28 22:57:52.194477 and minute 57
+current time 2023-12-28 23:02:52.294706 and minute 2
+current time 2023-12-28 23:07:52.394179 and minute 7
+started=== in run 
+summarization started at 23th hour
+======creating mongo client ======
+collection created
+from database start time == 2023-12-28T21:00:00 and endtime is 2023-12-28T22:00:00 
+==### final===,2023-12-28 22:00:00, 2023-12-28 23:00:00
+latest_start_time_str, latest_end_time_str before quering 2023-12-28 22:00:00 and 2023-12-28 23:00:00
+in mongo data class
+len list cur 0
+=====response=======, {'data': 'Updated incident_summary_time'}
+current time 2023-12-28 23:12:52.494161 and minute 12
+current time 2023-12-28 23:17:52.594183 and minute 17
+current time 2023-12-28 23:22:52.694172 and minute 22
+current time 2023-12-28 23:27:52.794183 and minute 27
+current time 2023-12-28 23:32:52.894364 and minute 32
+current time 2023-12-28 23:37:52.994441 and minute 37
+current time 2023-12-28 23:42:53.094664 and minute 42
+current time 2023-12-28 23:47:53.195117 and minute 47
+current time 2023-12-28 23:52:53.294758 and minute 52
+current time 2023-12-28 23:57:53.394188 and minute 57
+current time 2023-12-29 00:02:53.494194 and minute 2
+current time 2023-12-29 00:07:53.594831 and minute 7
+started=== in run 
+summarization started at 0th hour
+======creating mongo client ======
+collection created
+from database start time == 2023-12-28T22:00:00 and endtime is 2023-12-28T23:00:00 
+==### final===,2023-12-28 23:00:00, 2023-12-29 00:00:00
+latest_start_time_str, latest_end_time_str before quering 2023-12-28 23:00:00 and 2023-12-29 00:00:00
+in mongo data class
+len list cur 0
+=====response=======, {'data': 'Updated incident_summary_time'}
+current time 2023-12-29 00:12:53.695236 and minute 12
+current time 2023-12-29 00:17:53.795366 and minute 17
+current time 2023-12-29 00:22:53.894800 and minute 22
+current time 2023-12-29 00:27:53.995567 and minute 27
+current time 2023-12-29 00:32:54.096157 and minute 32
+current time 2023-12-29 00:37:54.198177 and minute 37
+current time 2023-12-29 00:42:54.298181 and minute 42
+current time 2023-12-29 00:47:54.398192 and minute 47
+current time 2023-12-29 00:52:54.498441 and minute 52
+current time 2023-12-29 00:57:54.598979 and minute 57
+current time 2023-12-29 01:02:54.699078 and minute 2
+current time 2023-12-29 01:07:54.798987 and minute 7
+started=== in run 
+summarization started at 1th hour
+======creating mongo client ======
+collection created
+from database start time == 2023-12-28T23:00:00 and endtime is 2023-12-29T00:00:00 
+==### final===,2023-12-29 00:00:00, 2023-12-29 01:00:00
+latest_start_time_str, latest_end_time_str before quering 2023-12-29 00:00:00 and 2023-12-29 01:00:00
+in mongo data class
+len list cur 0
+=====response=======, {'data': 'Updated incident_summary_time'}
+current time 2023-12-29 01:12:54.899289 and minute 12
+current time 2023-12-29 01:17:54.999018 and minute 17
+current time 2023-12-29 01:22:55.098654 and minute 22
+current time 2023-12-29 01:27:55.198418 and minute 27
+current time 2023-12-29 01:32:55.298831 and minute 32
+current time 2023-12-29 01:37:55.398551 and minute 37
+current time 2023-12-29 01:42:55.498169 and minute 42
+current time 2023-12-29 01:47:55.598209 and minute 47
+current time 2023-12-29 01:52:55.698658 and minute 52
+current time 2023-12-29 01:57:55.799072 and minute 57
+current time 2023-12-29 02:02:55.899208 and minute 2
+current time 2023-12-29 02:07:55.999654 and minute 7
+started=== in run 
+summarization started at 2th hour
+======creating mongo client ======
+collection created
+from database start time == 2023-12-29T00:00:00 and endtime is 2023-12-29T01:00:00 
+==### final===,2023-12-29 01:00:00, 2023-12-29 02:00:00
+latest_start_time_str, latest_end_time_str before quering 2023-12-29 01:00:00 and 2023-12-29 02:00:00
+in mongo data class
+len list cur 0
+=====response=======, {'data': 'Updated incident_summary_time'}
+current time 2023-12-29 02:12:56.099914 and minute 12
+current time 2023-12-29 02:17:56.199899 and minute 17
+current time 2023-12-29 02:22:56.299866 and minute 22
+current time 2023-12-29 02:27:56.399778 and minute 27
+current time 2023-12-29 02:32:56.499449 and minute 32
+current time 2023-12-29 02:37:56.599978 and minute 37
+current time 2023-12-29 02:42:56.700509 and minute 42
+current time 2023-12-29 02:47:56.800869 and minute 47
+current time 2023-12-29 02:52:56.901177 and minute 52
+current time 2023-12-29 02:57:57.001688 and minute 57
+current time 2023-12-29 03:02:57.101926 and minute 2
+current time 2023-12-29 03:07:57.202163 and minute 7
+started=== in run 
+summarization started at 3th hour
+======creating mongo client ======
+collection created
+from database start time == 2023-12-29T01:00:00 and endtime is 2023-12-29T02:00:00 
+==### final===,2023-12-29 02:00:00, 2023-12-29 03:00:00
+latest_start_time_str, latest_end_time_str before quering 2023-12-29 02:00:00 and 2023-12-29 03:00:00
+in mongo data class
+len list cur 0
+=====response=======, {'data': 'Updated incident_summary_time'}
+current time 2023-12-29 03:12:57.302363 and minute 12
+current time 2023-12-29 03:17:57.402239 and minute 17
+current time 2023-12-29 03:22:57.502365 and minute 22
+current time 2023-12-29 03:27:57.602171 and minute 27
+current time 2023-12-29 03:32:57.702928 and minute 32
+current time 2023-12-29 03:37:57.803042 and minute 37
+current time 2023-12-29 03:42:57.903424 and minute 42
+current time 2023-12-29 03:47:58.003011 and minute 47
+current time 2023-12-29 03:52:58.103253 and minute 52
+current time 2023-12-29 03:57:58.203347 and minute 57
+current time 2023-12-29 04:02:58.302773 and minute 2
+current time 2023-12-29 04:07:58.402638 and minute 7
+started=== in run 
+summarization started at 4th hour
+======creating mongo client ======
+collection created
+from database start time == 2023-12-29T02:00:00 and endtime is 2023-12-29T03:00:00 
+==### final===,2023-12-29 03:00:00, 2023-12-29 04:00:00
+latest_start_time_str, latest_end_time_str before quering 2023-12-29 03:00:00 and 2023-12-29 04:00:00
+in mongo data class
+len list cur 0
+=====response=======, {'data': 'Updated incident_summary_time'}
+current time 2023-12-29 04:12:58.503002 and minute 12
+current time 2023-12-29 04:17:58.603183 and minute 17
+current time 2023-12-29 04:22:58.703250 and minute 22
+current time 2023-12-29 04:27:58.803370 and minute 27
+current time 2023-12-29 04:32:58.902213 and minute 32
+current time 2023-12-29 04:37:59.002161 and minute 37
+current time 2023-12-29 04:42:59.102186 and minute 42
+current time 2023-12-29 04:47:59.202172 and minute 47
+current time 2023-12-29 04:52:59.302169 and minute 52
+current time 2023-12-29 04:57:59.402212 and minute 57
+current time 2023-12-29 05:02:59.502405 and minute 2
+current time 2023-12-29 05:07:59.602695 and minute 7
+started=== in run 
+summarization started at 5th hour
+======creating mongo client ======
+collection created
+from database start time == 2023-12-29T03:00:00 and endtime is 2023-12-29T04:00:00 
+==### final===,2023-12-29 04:00:00, 2023-12-29 05:00:00
+latest_start_time_str, latest_end_time_str before quering 2023-12-29 04:00:00 and 2023-12-29 05:00:00
+in mongo data class
+len list cur 0
+=====response=======, {'data': 'Updated incident_summary_time'}
